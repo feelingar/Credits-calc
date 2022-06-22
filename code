@@ -1,0 +1,23 @@
+B=0.10    #Процентная ставка
+def credit (z , months , balans, r, zd):
+    for o in range(months):
+        p=(balans*B*30)/365 #Формула для расчета пассивного дохода
+        D=(z+p-(r+zd)) #Доход (Расход учтен)
+        balans+=D # каждый шаг цикла прибавляется к балансу доход
+    return f'Ваш счёт с кредитом через {months} месяцев составит, {int(balans)}'
+  
+def no_credit (z , months, balans, r ):
+    for o in range(months):
+        p=(balans*B*30)/365
+        D=(z+p-r)
+        balans+=D
+    return f"Ваш счёт без кредита через {months} месяцев составит, {int(balans)}"
+def kopit (z,months,balans,r):
+    for o in range(months):
+        D=(z-r)
+        balans+=D
+    return f"Ваш счёт просто копя через {months} месяцев составит, {int(balans)}"
+h1, h2, h3, h4, h5, h6 =[int(s) for s in input('Введите ЧЕРЕЗ ПРОБЕЛ {Доход, Расход, Срок, Баланс с кредитом, Ежемесячный платёж по кредиту, Баланс БЕЗ кредита}').split()]
+print(credit(h1,h3,h4,h2,h5))
+print(no_credit(h1,h3,h6,h2))
+print(kopit(h1,h3,h6,h2))
